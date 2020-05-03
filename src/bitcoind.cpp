@@ -87,7 +87,7 @@ bool AppInit(int argc, char* argv[])
             strUsage += "\n" + _("Usage:") + "\n" +
                   "  sexcoind [options]                     " + strprintf(_("Start %s Daemon"), _(PACKAGE_NAME)) + "\n";
 
-            strUsage += "\n" + HelpMessage(HMM_BITCOIND);
+            strUsage += "\n" + HelpMessage(HMM_sexcoind);
         }
 
         fprintf(stdout, "%s", strUsage.c_str());
@@ -124,7 +124,7 @@ bool AppInit(int argc, char* argv[])
             }
         }
 
-        // -server defaults to true for bitcoind but not for the GUI so do this here
+        // -server defaults to true for sexcoind but not for the GUI so do this here
         gArgs.SoftSetBoolArg("-server", true);
         // Set this early so that parameter interactions go to console
         InitLogging();
@@ -189,7 +189,7 @@ int main(int argc, char* argv[])
 {
     SetupEnvironment();
 
-    // Connect bitcoind signal handlers
+    // Connect sexcoind signal handlers
     noui_connect();
 
     return (AppInit(argc, argv) ? EXIT_SUCCESS : EXIT_FAILURE);

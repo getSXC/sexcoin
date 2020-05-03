@@ -1,6 +1,6 @@
 dist_man1_MANS=
 
-if BUILD_BITCOIND
+if BUILD_sexcoind
   dist_man1_MANS+=sexcoind.1
 endif
 

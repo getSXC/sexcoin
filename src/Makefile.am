@@ -65,7 +65,7 @@ noinst_PROGRAMS =
 TESTS =
 BENCHMARKS =
 
-if BUILD_BITCOIND
+if BUILD_sexcoind
   bin_PROGRAMS += sexcoind
 endif
 
@@ -182,7 +182,7 @@ obj/build.h: FORCE
 	  "$(abs_top_srcdir)"
 libbitcoin_util_a-clientversion.$(OBJEXT): obj/build.h
 
-# server: shared between bitcoind and bitcoin-qt
+# server: shared between sexcoind and sexcoin-qt
 libbitcoin_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
 libbitcoin_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitcoin_server_a_SOURCES = \
@@ -236,7 +236,7 @@ libbitcoin_zmq_a_SOURCES = \
 endif
 
 
-# wallet: shared between bitcoind and bitcoin-qt, but only linked
+# wallet: shared between sexcoind and sexcoin-qt, but only linked
 # when wallet enabled
 libbitcoin_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 libbitcoin_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
@@ -316,7 +316,7 @@ libbitcoin_consensus_a_SOURCES = \
   utilstrencodings.h \
   version.h
 
-# common: shared between bitcoind, and bitcoin-qt and non-server tools
+# common: shared between sexcoind, and sexcoin-qt and non-server tools
 libbitcoin_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 libbitcoin_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitcoin_common_a_SOURCES = \
@@ -366,7 +366,7 @@ if GLIBC_BACK_COMPAT
 libbitcoin_util_a_SOURCES += compat/glibc_compat.cpp
 endif
 
-# cli: shared between bitcoin-cli and bitcoin-qt
+# cli: shared between sexcoin-cli and sexcoin-qt
 libbitcoin_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 libbitcoin_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitcoin_cli_a_SOURCES = \
@@ -376,14 +376,14 @@ libbitcoin_cli_a_SOURCES = \
 nodist_libbitcoin_util_a_SOURCES = $(srcdir)/obj/build.h
 #
 
-# bitcoind binary #
-sexcoind_SOURCES = bitcoind.cpp
+# sexcoind binary #
+sexcoind_SOURCES = sexcoind.cpp
 sexcoind_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 sexcoind_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 sexcoind_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-sexcoind_SOURCES += bitcoind-res.rc
+sexcoind_SOURCES += sexcoind-res.rc
 endif
 
 sexcoind_LDADD = \
@@ -402,14 +402,14 @@ sexcoind_LDADD = \
 
 sexcoind_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS)
 
-# bitcoin-cli binary #
-sexcoin_cli_SOURCES = bitcoin-cli.cpp
+# sexcoin-cli binary #
+sexcoin_cli_SOURCES = sexcoin-cli.cpp
 sexcoin_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
 sexcoin_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 sexcoin_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-sexcoin_cli_SOURCES += bitcoin-cli-res.rc
+sexcoin_cli_SOURCES += sexcoin-cli-res.rc
 endif
 
 sexcoin_cli_LDADD = \
@@ -421,14 +421,14 @@ sexcoin_cli_LDADD = \
 sexcoin_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
 #
 
-# bitcoin-tx binary #
-sexcoin_tx_SOURCES = bitcoin-tx.cpp
+# sexcoin-tx binary #
+sexcoin_tx_SOURCES = sexcoin-tx.cpp
 sexcoin_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 sexcoin_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 sexcoin_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-sexcoin_tx_SOURCES += bitcoin-tx-res.rc
+sexcoin_tx_SOURCES += sexcoin-tx-res.rc
 endif
 
 sexcoin_tx_LDADD = \

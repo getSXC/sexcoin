@@ -1,0 +1,6 @@
+usr/local/bin/sexcoin-qt usr/bin
+share/pixmaps/bitcoin32.xpm usr/share/pixmaps
+share/pixmaps/bitcoin16.xpm usr/share/pixmaps
+share/pixmaps/sexcoin128.png usr/share/pixmaps
+debian/sexcoin-qt.desktop usr/share/applications
+debian/sexcoin-qt.protocol usr/share/kde4/services/
